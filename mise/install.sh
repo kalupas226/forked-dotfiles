@@ -15,7 +15,7 @@ fi
 if ! grep -q "mise activate" ~/.zshrc
 then
   echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
-  . ~/.zshrc
+  eval "$(~/.local/bin/mise activate zsh)"
 fi
 
 # Install node using mise
