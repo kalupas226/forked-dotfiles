@@ -15,11 +15,12 @@ fi
 if ! grep -q "mise activate" ~/.zshrc
 then
   echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+  . ~/.zshrc
 fi
 
 # Install node using mise
 echo "  Installing node using mise."
-~/.local/bin/mise use --global node@latest
+mise use --global node@latest
 
 # Install npm packages from npmfile
 if [ -f "npmfile" ]; then
