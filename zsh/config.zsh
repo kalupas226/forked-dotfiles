@@ -54,6 +54,14 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
 # bindings for custom functions
+function cdrepo() {
+  local selected_dir=$(ghq list -p | fzf -q "$LBUFER" --preview='exa -l {}')
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
 zle -N cdrepo
 bindkey '^@' cdrepo
 
